@@ -58,9 +58,62 @@ const restaurant = {
   },
 };
 
-console.log(restaurant);
+/*
+/////////////////////////////////////////////////////////////////////
+// Maps
+/////////////////////////////////////////////////////////////////////
+const rest = new Map();
+rest.set("name", "Pizza Hutt");
+rest.set(1, "Dhaka");
+rest.set(2, "Chittagong");
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 10)
+  .set("close", 22)
+  .set(true, "We are open")
+  .set(false, "We are closed");
 
-/* // Looping objects
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 14;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+console.log(rest.has("capital"));
+rest.delete(2);
+// rest.clear();
+const arr = [1, 2];
+rest.set(arr, "Array");
+console.log(rest.get(arr));
+console.log(rest);
+
+const lang = new Map([
+  [1, "C"],
+  [2, "C++"],
+  [3, "Java"],
+  [4, "JavaScript"],
+  [5, "Python"],
+  [6, "C#"],
+]);
+console.log(lang);
+
+for (const [key, value] of lang) {
+  console.log(`${key}: ${value}`);
+}
+
+// object to map
+const hours = new Map(Object.entries(openingHours));
+console.log(hours);
+
+// map to array
+console.log(...lang);
+console.log([...lang.keys()]);
+console.log([...lang.values()]); */
+/*
+////////////////////////////////////////////////////////////////////////////////////
+// Looping objects
+//////////////////////////////////////////////////////////////////////////////////
 // Property names (key)
 const properties = Object.keys(restaurant.openingHours);
 console.log(properties);
@@ -444,3 +497,117 @@ console.log(f1, f2, f3, f4, f5);
 const arrNew = [10, 30];
 const [p = 100, q = 100, r = 100, w = 100] = arrNew;
 console.log(p, q, r, w); */
+
+/* // Strings
+const station = "Pahartoli Station";
+const train = "T678 Provati";
+
+console.log(train[0]);
+// console.log(train[-1]);
+console.log(train.at(0));
+console.log(train[1]);
+console.log("T555"[0]);
+
+console.log(station.length);
+console.log("T555".length);
+
+console.log(station.indexOf("P"));
+console.log(station.indexOf("o"));
+console.log(station.indexOf("a"));
+console.log(station.lastIndexOf("a"));
+console.log(station.indexOf("Station"));
+
+// Slice(starting index, ending index - not included)
+console.log(station.slice(10));
+console.log(station.slice(0, 9));
+console.log(station.slice(0, station.indexOf(" ")));
+console.log(station.slice(station.indexOf(" ") + 1));
+console.log(station.slice(1, -1));
+console.log(station.at(-1)); // ES2022
+// last element
+console.log(station[station.length - 1]);
+console.log(station.at(-1));
+console.log(station.slice(-1));
+
+const checkWindowSeat = function (seatNumber) {
+  // W is for window
+  // M for middle
+  // C for cabin
+  const slicedSeatNum = seatNumber.slice(2, 3); //W or M or C
+  if (slicedSeatNum === "W")
+    console.log(
+      `Your seat number is ${seatNumber} and it's placed beside window.`
+    );
+  else
+    console.log(
+      `Your seat number is ${seatNumber} and it's not placed beside window.`
+    );
+};
+
+checkWindowSeat("22W11");
+checkWindowSeat("23M34");
+checkWindowSeat("24C33");
+checkWindowSeat("76W56");
+checkWindowSeat("44M34");
+
+console.log(typeof new String("Shohan")); // object
+console.log(typeof new String("Shohan").slice(0)); // string */
+
+// Strings - part 2
+const station = "Komolapur Station";
+
+console.log(station.toLowerCase());
+console.log(station.toUpperCase());
+console.log("Shohan".toUpperCase());
+
+function fixCap(name) {
+  const lowerName = name.toLowerCase(); // shohan
+  const correctName = lowerName.at(0).toUpperCase() + lowerName.slice(1); // Shohan
+  return correctName;
+}
+
+console.log(fixCap("sHoHan"));
+console.log(fixCap("TUMPa"));
+console.log(fixCap("AyeSHA"));
+
+function normalizedEmail(email) {
+  const normalizedEmail = email.toLowerCase().trim();
+  return normalizedEmail;
+}
+
+console.log(normalizedEmail("  Shohan@Gmail.COM \n"));
+console.log(normalizedEmail("     tumpA@gMail.Com   \n"));
+
+// replace
+const jutaPrice = "500TK";
+const jutaPriceUSD = jutaPrice.replace("TK", "$");
+console.log(jutaPriceUSD);
+console.log(jutaPrice);
+
+const warningMsg = "Beware of Trojan.86! Trojan.86! Trojan.86!"; //Trojan v86
+// const warningMsgCorrect = warningMsg.replace(".", " v");
+// reg exp
+// const warningMsgCorrect = warningMsg.replace(/Trojan/g, "MyDoom");
+// const warningMsgCorrect = warningMsg.replace(/.86/g, " v96");
+const warningMsgCorrect = warningMsg.replaceAll(".", " v"); // ES2022
+console.log(warningMsgCorrect);
+
+// Repeat
+const message = "Bad weather!";
+console.log(message.repeat(10));
+
+function planeInLine(num) {
+  console.log(`There are ${num} planes in line! ${"✈️".repeat(num)}`);
+}
+
+planeInLine(5);
+planeInLine(8);
+planeInLine(3);
+planeInLine(6);
+
+// Split and join
+console.log("it+is+a+very+nice+day".split("+"));
+const splittedName = "Shohanur Rahman".split(" ");
+const joinedName = splittedName.join(" ");
+console.log(splittedName);
+console.log(joinedName);
